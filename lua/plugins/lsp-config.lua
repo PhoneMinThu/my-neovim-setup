@@ -35,6 +35,7 @@ return {
 
           -- javascript, typescript
           "ts_ls",
+          "eslint",
 
           -- html
           "html",
@@ -66,6 +67,9 @@ return {
         capabilities = capabilities,
       })
       lspconfig.ruff.setup({})
+
+      -- typescript, javascript
+      lspconfig.ts_ls.setup({})
 
       -- html
       lspconfig.html.setup({
