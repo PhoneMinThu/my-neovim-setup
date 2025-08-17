@@ -12,7 +12,6 @@ vim.opt.relativenumber = true
 
 -- line, column
 vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
 
 -- -- encoding
 -- vim.opt.encoding = "utf-8"
@@ -25,3 +24,6 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = true
 vim.o.foldlevel = 99 -- prevents folds from being closed by default
+
+-- Terminal and color settings for bold text support
+vim.opt.termguicolors = true
