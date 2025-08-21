@@ -10,13 +10,6 @@ return {
         end,
         desc = "Git status",
       },
-      {
-        "<leader>gd",
-        function()
-          vim.cmd.Gdiffsplit()
-        end,
-        desc = "Git diff",
-      },
     },
   },
   {

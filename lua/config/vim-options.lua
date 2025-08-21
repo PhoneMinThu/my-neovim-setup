@@ -12,6 +12,7 @@ vim.opt.relativenumber = true
 
 -- line, column
 vim.opt.cursorline = true
+-- vim.opt.cursorcolumn = true
 
 -- -- encoding
 -- vim.opt.encoding = "utf-8"

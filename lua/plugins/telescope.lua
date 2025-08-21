@@ -61,7 +61,6 @@ return {
       end, { desc = "Outline (LSP Symbols)" })
 
       vim.keymap.set("n", "<leader>fd", diff.pick_and_diff, { desc = "Pick two files and diff" })
-      vim.keymap.set("n", "<leader>fx", diff.exit, { desc = "Exit diff mode" })
     end,
   },
 }
