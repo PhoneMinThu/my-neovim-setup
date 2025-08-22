@@ -56,9 +56,6 @@ return {
           cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
         })
       end, { desc = "Find Source" })
-      vim.keymap.set("n", "<leader>fo", function()
-        builtin.lsp_document_symbols()
-      end, { desc = "Outline (LSP Symbols)" })
 
       vim.keymap.set("n", "<leader>fd", diff.pick_and_diff, { desc = "Pick two files and diff" })
     end,

@@ -5,8 +5,37 @@ return {
   ---@diagnostic disable-next-line: undefined-doc-name
   ---@type snacks.Config
   opts = {
+    dashboard = {
+      enabled = true,
+      preset = {
+        header = table.concat({
+          [[
+█▀█ █░█ █▀█ █▄░█ █▀▀   █▀▄▀█ ▀█▀
+█▀▀ █▀█ █▄█ █░▀█ ██▄   █░▀░█ ░█░
+          ]],
+          [[╭─────────────────╮]],
+          [[│ ╔═══╗     ╔═══╗ │]],
+          [[│ ║   ║─────║   ║ │]],
+          [[│ ╚═══╝     ╚═══╝ │]],
+          [[│   │        │   │]],
+          [[│ ╔═══╗     ╔═══╗ │]],
+          [[│ ║\\\║─────║   ║ │]],
+          [[│ ╚═══╝     ╚═══╝ │]],
+          [[╰─────────────────╯]],
+          [[                   ]],
+        }, "\n"),
+      },
+      sections = {
+        -- System Stats
+        {
+          section = "header",
+        },
+        -- Other sections
+        { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = { 2, 2 } },
+        { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
+      },
+    },
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
     explorer = { enabled = true },
     rename = { enabled = true },
     indent = { enabled = true },
@@ -90,9 +119,53 @@ return {
     {
       "<leader>ss",
       function()
-        Snacks.picker.lsp_symbols()
+        -- Enhanced LSP symbols picker that auto-selects the current symbol
+        local current_line = vim.api.nvim_win_get_cursor(0)[1]
+
+        local picker = Snacks.picker.lsp_symbols({
+          -- Custom callback to position cursor at nearest symbol after finder loads
+          on_show = function(self)
+            -- Use vim.defer_fn to ensure the finder has loaded the items
+            vim.defer_fn(function()
+              -- Safety checks
+              if not self or not self.list then
+                return
+              end
+
+              local items = self.list.items or {}
+              if #items == 0 then
+                return
+              end
+
+              -- Find closest symbol to current cursor position
+              local closest_idx = 1
+              local min_distance = math.huge
+
+              for i, item in ipairs(items) do
+                -- LSP symbols have line number in various fields
+                local item_line = item.lnum
+                  or (item.pos and item.pos[1])
+                  or (item.location and item.location.range and item.location.range.start.line + 1)
+                if item_line then
+                  local distance = math.abs(item_line - current_line)
+                  if distance < min_distance then
+                    min_distance = distance
+                    closest_idx = i
+                  end
+                end
+              end
+
+              -- Move to the closest symbol (absolute positioning, with rendering)
+              if self.list.move then
+                self.list:move(closest_idx, true, true)
+              end
+            end, 100) -- Increased delay to ensure items are fully loaded
+          end,
+        })
+
+        return picker
       end,
-      desc = "LSP Symbols",
+      desc = "LSP Symbols (Auto-positioned)",
     },
     {
       "<leader>sS",
