@@ -1,4 +1,4 @@
 return {
-    "echasnovski/mini.icons",
-    event = "VeryLazy",
+  "echasnovski/mini.icons",
+  event = "VeryLazy",
 }
