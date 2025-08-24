@@ -4,12 +4,15 @@ return {
     tag = "0.1.8",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-ui-select.nvim",
+      {
+        "nvim-telescope/telescope-ui-select.nvim",
+      },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
       },
     },
+    event = "VeryLazy",
     config = function()
       local telescope = require("telescope")
       local multigrep = require("config.telescope.multigrep")

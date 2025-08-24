@@ -14,6 +14,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
     config = function()
       require("gitsigns").setup({
         on_attach = function(bufnr)
@@ -44,10 +45,6 @@ return {
               gitsigns.nav_hunk("prev")
             end
           end, { desc = "Prev hunk" })
-
-          -- Toggles
-          map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle git blame" })
-          map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "Toggle git word diff" })
 
           -- Text object
           map({ "o", "x" }, "ih", gitsigns.select_hunk)
