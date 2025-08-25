@@ -50,6 +50,7 @@ return {
                     map({ "o", "x" }, "ih", gitsigns.select_hunk)
                 end,
             })
+			vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })
         end,
     },
 }
