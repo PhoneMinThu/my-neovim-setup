@@ -14,13 +14,9 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 -- vim.opt.cursorcolumn = true
 
--- encoding and Unicode support
+-- -- encoding
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
--- termencoding is not supported in Neovim (always UTF-8)
-
--- Wide character support for CJK and Myanmar text
-vim.opt.ambiwidth = "double"
 
 -- learder
 vim.g.mapleader = " "

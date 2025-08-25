@@ -32,7 +32,6 @@ M.live_multigrep = function(opts)
 			-- Extract search term
 			local search_term = prompt:match("^%S+")
 			if search_term then
-				table.insert(args, "-e")
 				table.insert(args, search_term)
 			end
 
@@ -77,7 +76,7 @@ M.live_multigrep = function(opts)
 			prompt_title = prompt_title,
 			finder = finder,
 			previewer = conf.grep_previewer(opts),
-			sorter = require("telescope.sorters").empty(),
+			sorter = conf.generic_sorter(opts),
 		})
 		:find()
 end
