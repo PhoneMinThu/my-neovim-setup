@@ -14,8 +14,8 @@ return {
 
 				-- javascript, typescript
 				null_ls.builtins.formatting.prettier,
-				require("none-ls.diagnostics.eslint_d"),
-				require("none-ls.code_actions.eslint_d"),
+				require("none-ls.diagnostics.eslint"),
+				require("none-ls.code_actions.eslint"),
 			},
 		})
 
