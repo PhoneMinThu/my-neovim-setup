@@ -95,6 +95,7 @@ return {
                     "vtsls",
                     "vue_ls",
                     "clangd",
+                    "tailwindcss",
                 },
             })
         end,
@@ -159,15 +160,19 @@ return {
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
+            vim.keymap.set("n", "gd", function()
+                vim.lsp.buf.definition()
+            end, { desc = "Goto Definition" })
+
             vim.keymap.set("n", "gv", function()
                 vim.cmd("vsplit")
                 vim.lsp.buf.definition()
-            end, { desc = "Go to Definition (VSplit)" })
+            end, { desc = "Goto Definition (VSplit)" })
 
             vim.keymap.set("n", "gs", function()
                 vim.cmd("split")
                 vim.lsp.buf.definition()
-            end, { desc = "Go to Definition (Split)" })
+            end, { desc = "Goto Definition (Split)" })
         end,
     },
 }

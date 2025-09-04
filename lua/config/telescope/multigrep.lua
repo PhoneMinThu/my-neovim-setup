@@ -78,6 +78,16 @@ M.live_multigrep = function(opts)
             finder = finder,
             previewer = conf.grep_previewer(opts),
             sorter = require("telescope.sorters").empty(),
+
+            -- 🔹 Live highlight hook
+            on_input_filter_cb = function(prompt)
+                local search_term = prompt:match("^%S+")
+                if search_term and search_term ~= "" then
+                    vim.fn.setreg("/", search_term)
+                    vim.opt.hlsearch = true
+                end
+                return { prompt = prompt }
+            end,
         })
         :find()
 end

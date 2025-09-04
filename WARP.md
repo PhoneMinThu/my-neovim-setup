@@ -67,7 +67,6 @@ Plugin Stack:
   - Custom vtsls+vue_ls integration for Vue.js TypeScript support
 - **Treesitter**: Syntax highlighting, folding (foldmethod=expr, foldlevel=99)
 - **Completion**: nvim-cmp + LuaSnip + friendly-snippets + custom Python snippets
-- **Formatting/Linting**: none-ls with stylua, prettier, eslint_d
 - **UI/UX**: Dual picker system (telescope + snacks), catppuccin theme, lualine
 - **AI Integration**: neoai.nvim with OpenAI/Groq support
 
@@ -176,9 +175,6 @@ git, ripgrep, make, curl
 
 # Language runtimes  
 node, npm/pnpm, python3, pip
-
-# Formatters/linters (auto-installed via Mason)
-stylua, prettier, eslint_d
 
 # Optional but recommended
 lazygit                 # Git TUI integration
