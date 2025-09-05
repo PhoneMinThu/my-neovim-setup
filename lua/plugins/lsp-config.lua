@@ -159,11 +159,6 @@ return {
             -- LSP Keymaps
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-
-            vim.keymap.set("n", "gd", function()
-                vim.lsp.buf.definition()
-            end, { desc = "Goto Definition" })
-
             vim.keymap.set("n", "gv", function()
                 vim.cmd("vsplit")
                 vim.lsp.buf.definition()
