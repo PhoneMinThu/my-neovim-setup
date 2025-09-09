@@ -90,6 +90,7 @@ return {
                     "lua_ls",
                     "pyright",
                     "ruff",
+                    "rust_analyzer",
                     "ts_ls",
                     "html",
                     "vtsls",
@@ -124,6 +125,11 @@ return {
                 capabilities = capabilities,
             })
             lspconfig.ruff.setup({
+                capabilities = capabilities,
+            })
+
+            -- Rust
+            lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
             })
 

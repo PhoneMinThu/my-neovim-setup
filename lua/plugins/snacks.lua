@@ -28,13 +28,25 @@ return {
                     [[                   ]],
                 }, "\n"),
             },
+            formats = {
+                key = function(item)
+                    return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
+                end,
+            },
             sections = {
-                -- System Stats
+                -- {
+                --     section = "terminal",
+                --     cmd = "spring_dumper",
+                --     hl = "header",
+                --     padding = 1,
+                --     indent = 10,
+                --     width = 100,
+                --     height = 20,
+                -- },
                 {
                     section = "header",
                 },
-                -- Other sections
-                { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = { 2, 2 } },
+                { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
                 { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
             },
         },
