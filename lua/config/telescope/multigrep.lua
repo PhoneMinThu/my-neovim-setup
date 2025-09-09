@@ -22,45 +22,24 @@ M.live_multigrep = function(opts)
                 return nil
             end
 
+            local pieces = vim.split(prompt, "  ")
             local args = { "rg" }
+            if pieces[1] then
+                table.insert(args, "-e")
+                table.insert(args, pieces[1])
+            end
+
+            if pieces[2] then
+                table.insert(args, "-g")
+                table.insert(args, pieces[2])
+            end
 
             if opts.hidden then
                 table.insert(args, "-u")
                 table.insert(args, "-u")
             end
 
-            -- Extract search term
-            local search_term = prompt:match("^%S+")
-            if search_term then
-                table.insert(args, "-e")
-                table.insert(args, search_term)
-            end
-
-            -- Extract --include list
-            local include_raw = prompt:match("%-%-include=%[(.-)%]")
-            if include_raw then
-                for _, pat in ipairs(vim.split(include_raw, ",")) do
-                    pat = vim.trim(pat)
-                    if pat ~= "" then
-                        table.insert(args, "-g")
-                        table.insert(args, pat)
-                    end
-                end
-            end
-
-            -- Extract --exclude list
-            local exclude_raw = prompt:match("%-%-exclude=%[(.-)%]")
-            if exclude_raw then
-                for _, pat in ipairs(vim.split(exclude_raw, ",")) do
-                    pat = vim.trim(pat)
-                    if pat ~= "" then
-                        table.insert(args, "-g")
-                        table.insert(args, "!" .. pat)
-                    end
-                end
-            end
-
-            -- Add ripgrep flags
+            ---@diagnostic disable-next-line: deprecated
             return vim.tbl_flatten({
                 args,
                 { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
