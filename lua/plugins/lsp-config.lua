@@ -1,4 +1,3 @@
----@diagnostic disable: deprecated
 local vue_language_server_path = vim.fn.stdpath("data")
     .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
@@ -97,6 +96,7 @@ return {
                     "vue_ls",
                     "clangd",
                     "tailwindcss",
+                    "jdtls",
                 },
             })
         end,
@@ -105,16 +105,15 @@ return {
         "neovim/nvim-lspconfig",
         lazy = false,
         config = function()
-            local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- Lua
-            lspconfig.lua_ls.setup({
+            vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
             })
 
             -- Python
-            lspconfig.pyright.setup({
+            vim.lsp.config("pyright", {
                 settings = {
                     python = {
                         analysis = {
@@ -124,34 +123,52 @@ return {
                 },
                 capabilities = capabilities,
             })
-            lspconfig.ruff.setup({
+            vim.lsp.config("ruff", {
                 capabilities = capabilities,
             })
 
             -- Rust
-            lspconfig.rust_analyzer.setup({
+            vim.lsp.config("rust_analyzer", {
                 capabilities = capabilities,
             })
 
             -- TypeScript/JavaScript (fallback if not using vtsls for some projects)
-            lspconfig.ts_ls.setup({
+            vim.lsp.config("ts_ls", {
                 capabilities = capabilities,
             })
 
             -- CPP
-            lspconfig.clangd.setup({
+            vim.lsp.config("clangd", {
                 capabilities = capabilities,
             })
 
             -- HTML
-            lspconfig.html.setup({
+            vim.lsp.config("html", {
                 capabilities = capabilities,
             })
 
             -- Vue
             vim.lsp.config("vtsls", vtsls_config)
             vim.lsp.config("vue_ls", vue_ls_config)
-            vim.lsp.enable({ "vtsls", "vue_ls" })
+
+            -- Java
+            vim.lsp.config("jdtls", {
+                capabilities = capabilities,
+            })
+
+            -- Enable all LSP servers
+            vim.lsp.enable({
+                "lua_ls",
+                "pyright",
+                "ruff",
+                "rust_analyzer",
+                "ts_ls",
+                "clangd",
+                "html",
+                "vtsls",
+                "vue_ls",
+                "jdtls",
+            })
 
             -- Global Diagnostic UI settings
             vim.diagnostic.config({

@@ -1,7 +1,7 @@
 return {
     {
         "tpope/vim-fugitive",
-        cmd = { "Git", "G", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GcLog", "Gclog"  },
+        cmd = { "Git", "G", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GcLog", "Gclog", "GlLog" },
         keys = {
             {
                 "<leader>gg",
@@ -50,7 +50,7 @@ return {
                     map({ "o", "x" }, "ih", gitsigns.select_hunk)
                 end,
             })
-			vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })
+            vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })
         end,
     },
 }
