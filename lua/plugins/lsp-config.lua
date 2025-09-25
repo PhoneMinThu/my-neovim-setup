@@ -95,8 +95,12 @@ return {
                     "vtsls",
                     "vue_ls",
                     "clangd",
+                    "cssls",
                     "tailwindcss",
                     "jdtls",
+                    "postgres_lsp",
+                    "jsonls",
+                    "yamlls",
                 },
             })
         end,
@@ -147,12 +151,33 @@ return {
                 capabilities = capabilities,
             })
 
+            -- CSS
+            vim.lsp.config("cssls", {
+                capabilities = capabilities,
+            })
+            vim.lsp.config("tailwindcss", {
+                capabilities = capabilities,
+            })
+
             -- Vue
             vim.lsp.config("vtsls", vtsls_config)
             vim.lsp.config("vue_ls", vue_ls_config)
 
             -- Java
             vim.lsp.config("jdtls", {
+                capabilities = capabilities,
+            })
+
+            -- PGSQL
+            vim.lsp.config("postgres_lsp", {
+                capabilities = capabilities,
+            })
+
+            -- JSON, YAML
+            vim.lsp.config("jsonls", {
+                capabilities = capabilities,
+            })
+            vim.lsp.config("yamlls", {
                 capabilities = capabilities,
             })
 
@@ -163,11 +188,40 @@ return {
                 "ruff",
                 "rust_analyzer",
                 "ts_ls",
-                "clangd",
                 "html",
                 "vtsls",
                 "vue_ls",
+                "clangd",
+                "cssls",
+                "tailwindcss",
                 "jdtls",
+                "postgres_lsp",
+                "jsonls",
+                "yamlls",
+            })
+
+            -- Manual sqruff LSP configuration
+            local lspconfig = require("lspconfig")
+
+            -- Configure sqruff manually since it's not in mason
+            local configs = require("lspconfig.configs")
+
+            if not configs.sqruff then
+                configs.sqruff = {
+                    default_config = {
+                        cmd = { "sqruff", "lsp" },
+                        filetypes = { "sql" },
+                        root_dir = lspconfig.util.root_pattern(".sqruff", ".git"),
+                        settings = {},
+                    },
+                    docs = {
+                        description = "Fast SQL linter and formatter",
+                    },
+                }
+            end
+
+            lspconfig.sqruff.setup({
+                capabilities = capabilities,
             })
 
             -- Global Diagnostic UI settings
