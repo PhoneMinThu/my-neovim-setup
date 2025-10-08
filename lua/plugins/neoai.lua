@@ -1,7 +1,7 @@
 local OPENAI_API_KEY = require("config.env").OPENAI_API_KEY
 
 return {
-    dir = "/media/phonemt/linux_data/unix_dev/neovim-plugins/neoai.nvim/neoai.nvim",
+    dir = "/media/phonemt/linux_data/unix_dev/neovim-plugins/neoai.nvim/neoai.nvim/neoai.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",

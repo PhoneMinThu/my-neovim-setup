@@ -168,11 +168,6 @@ return {
                 capabilities = capabilities,
             })
 
-            -- PGSQL
-            vim.lsp.config("postgres_lsp", {
-                capabilities = capabilities,
-            })
-
             -- JSON, YAML
             vim.lsp.config("jsonls", {
                 capabilities = capabilities,
@@ -200,12 +195,34 @@ return {
                 "yamlls",
             })
 
-            -- Manual sqruff LSP configuration
+            -- Manual LSP configurations
             local lspconfig = require("lspconfig")
-
-            -- Configure sqruff manually since it's not in mason
             local configs = require("lspconfig.configs")
 
+            -- Configure postgres_lsp manually (using postgrestools)
+            if not configs.postgres_lsp then
+                configs.postgres_lsp = {
+                    default_config = {
+                        cmd = {
+                            vim.fn.stdpath("data") .. "/mason/bin/postgrestools",
+                            "lsp-proxy",
+                            "--config-path=" .. vim.fn.stdpath("config") .. "/postgrestools.jsonc",
+                        },
+                        filetypes = { "sql", "pgsql" },
+                        root_dir = lspconfig.util.root_pattern(".git", "postgrestools.jsonc"),
+                        settings = {},
+                    },
+                    docs = {
+                        description = "PostgreSQL LSP server using postgrestools",
+                    },
+                }
+            end
+
+            lspconfig.postgres_lsp.setup({
+                capabilities = capabilities,
+            })
+
+            -- Configure sqruff manually since it's not in mason
             if not configs.sqruff then
                 configs.sqruff = {
                     default_config = {
