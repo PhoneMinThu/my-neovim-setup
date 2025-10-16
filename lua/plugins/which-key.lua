@@ -12,6 +12,7 @@ return {
 		},
 		{ "<leader>a", desc = "NeoAI" },
 		{ "<leader>c", desc = "LSP" },
+		{ "<leader>d", desc = "Debug" },
 		{ "<leader>f", desc = "Find/Telescope" },
 		{ "<leader>g", desc = "Git" },
 		{ "<leader>n", desc = "Notifications" },
@@ -23,6 +24,7 @@ return {
 		wk.add({
 			{ "<leader>a", desc = "NeoAI" },
 			{ "<leader>c", desc = "LSP" },
+			{ "<leader>d", desc = "Debug" },
 			{ "<leader>f", desc = "Find/Telescope" },
 			{ "<leader>g", desc = "Git" },
 			{ "<leader>n", desc = "Notifications" },

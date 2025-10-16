@@ -189,7 +189,7 @@ return {
                 "clangd",
                 "cssls",
                 "tailwindcss",
-                "jdtls",
+                -- jdtls managed by nvim-jdtls in dap.lua
                 "postgres_lsp",
                 "jsonls",
                 "yamlls",
