@@ -94,13 +94,12 @@ return {
                     "html",
                     "vtsls",
                     "vue_ls",
-                    "clangd",
                     "cssls",
                     "tailwindcss",
-                    "jdtls",
                     "postgres_lsp",
                     "jsonls",
                     "yamlls",
+                    "docker_language_server",
                 },
             })
         end,
@@ -164,9 +163,9 @@ return {
             vim.lsp.config("vue_ls", vue_ls_config)
 
             -- Java
-            vim.lsp.config("jdtls", {
-                capabilities = capabilities,
-            })
+            -- vim.lsp.config("jdtls", {
+            --     capabilities = capabilities,
+            -- })
 
             -- JSON, YAML
             vim.lsp.config("jsonls", {
@@ -253,6 +252,16 @@ return {
             -- LSP Keymaps
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+
+            -- lsp position
+            vim.keymap.set("n", "gd", function()
+                vim.lsp.buf.definition()
+            end, { desc = "Goto Definition" })
+            vim.keymap.set("n", "gD", function()
+                vim.lsp.buf.declaration()
+            end, { desc = "Goto Declaration" })
+
+            -- split window
             vim.keymap.set("n", "gv", function()
                 vim.cmd("vsplit")
                 vim.lsp.buf.definition()

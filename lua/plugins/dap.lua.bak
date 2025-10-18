@@ -1,0 +1,103 @@
+return {
+    {
+        "mfussenegger/nvim-dap",
+        event = "VeryLazy",
+        config = function()
+            local dap = require("dap")
+            -- Signs
+            vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError", numhl = "" })
+            vim.fn.sign_define("DapStopped", { text = "➤", texthl = "DiagnosticWarn", numhl = "" })
+            vim.fn.sign_define("DapBreakpointRejected", { text = "◌", texthl = "DiagnosticInfo", numhl = "" })
+
+            -- Python configurations
+            local function python_path()
+                for _, v in ipairs({ ".venv", "venv" }) do
+                    local p = vim.fn.getcwd() .. "/" .. v .. "/bin/python"
+                    if vim.fn.executable(p) == 1 then
+                        return p
+                    end
+                end
+                return "python3"
+            end
+
+            dap.configurations.python = {
+                {
+                    name = "Launch file",
+                    type = "python",
+                    request = "launch",
+                    program = "${file}",
+                    pythonPath = python_path,
+                },
+                {
+                    name = "Module",
+                    type = "python",
+                    request = "launch",
+                    module = "module",
+                    args = { "${file}" },
+                    pythonPath = python_path,
+                },
+                {
+                    name = "Attach to process",
+                    type = "python",
+                    request = "attach",
+                    processId = require("dap.utils").pick_process,
+                },
+            }
+            -- Keymaps (normal mode)
+            local function map(lhs, rhs, desc)
+                vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
+            end
+            map("<leader>db", function() require("dap").toggle_breakpoint() end, "Debug: Toggle Breakpoint")
+            map("<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Condition: ")) end,
+                "Debug: Conditional Breakpoint")
+            map("<leader>dd", function() require("dapui").toggle() end, "Debug: Toggle UI")
+            map("<leader>dc", function() require("dap").continue() end, "Debug: Continue")
+            map("<leader>dn", function() require("dap").step_over() end, "Debug: Step Over")
+            map("<leader>di", function() require("dap").step_into() end, "Debug: Step Into")
+            map("<leader>do", function() require("dap").step_out() end, "Debug: Step Out")
+            map("<leader>dr", function() require("dap").run_last() end, "Debug: Run Last")
+            map("<leader>dQ", function() require("dap").terminate() end, "Debug: Terminate")
+            map("<leader>dl", function() require("dap").repl.open() end, "Debug: REPL")
+            map("<leader>dS", "<cmd>Telescope dap configurations<CR>", "Debug: Telescope DAP")
+        end,
+    },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = { "mason-org/mason.nvim", "mfussenegger/nvim-dap" },
+        opts = {
+            ensure_installed = { "debugpy", "java-debug-adapter", "java-test" },
+            handlers = {},
+        },
+        config = function(_, opts)
+            require("mason-nvim-dap").setup(opts)
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        config = function()
+            local dap, dapui = require("dap"), require("dapui")
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+        end,
+    },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        opts = { highlight_changed_variables = true, commented = true },
+    },
+    {
+        "nvim-telescope/telescope-dap.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            pcall(require("telescope").load_extension, "dap")
+        end,
+    },
+}

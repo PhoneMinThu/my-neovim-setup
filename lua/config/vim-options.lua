@@ -26,5 +26,8 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = true
 vim.o.foldlevel = 99 -- prevents folds from being closed by default
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Terminal and color settings for bold text support
 vim.opt.termguicolors = true

@@ -17,6 +17,6 @@ return {
                 require("none-ls.code_actions.eslint_d"),
             },
         })
-        vim.keymap.set("n", "<M-F>", vim.lsp.buf.format, {})
+        vim.keymap.set("n", "<M-F>", vim.lsp.buf.format, { desc = "Code Format" })
     end,
 }

@@ -46,8 +46,8 @@ return {
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-k>"] = cmp.mapping.select_prev_item(), -- Scroll up in the list
-                    ["<C-j>"] = cmp.mapping.select_next_item(), -- Scroll down in the list
+                    ["<tab>"] = cmp.mapping.select_prev_item(), -- Scroll up in the list
+                    ["<S-tab>"] = cmp.mapping.select_next_item(), -- Scroll down in the list
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },

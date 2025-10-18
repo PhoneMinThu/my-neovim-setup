@@ -1,7 +1,6 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.8",
         dependencies = {
             "nvim-lua/plenary.nvim",
             {
@@ -35,17 +34,17 @@ return {
             telescope.load_extension("ui-select")
             telescope.load_extension("fzf")
 
-            vim.keymap.set("n", "<leader>fz", function()
+            --- find
+            vim.keymap.set("n", "<leader>ff", function()
                 builtin.find_files({})
             end, { desc = "Find Files" })
-            vim.keymap.set("n", "<leader>fZ", function()
+            vim.keymap.set("n", "<leader>fa", function()
                 builtin.find_files({
                     hidden = true,
                     no_ignore = true,
                 })
             end, { desc = "Find Files (Hidden)" })
             vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
-
             vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
             vim.keymap.set("n", "<leader>fg", multigrep.live_multigrep, { desc = "Multi Live Grep" })
             vim.keymap.set("n", "<leader>fG", function()
@@ -58,6 +57,36 @@ return {
                     cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
                 })
             end, { desc = "Find Source" })
+            vim.keymap.set("n", "<leader>fz", function()
+                builtin.current_buffer_fuzzy_find()
+            end, { desc = "Buffers lines" })
+
+            --- search
+            vim.keymap.set("n", "<leader>sj", function()
+                builtin.jumplist({
+                    show_line = false,
+                    trim_text = false,
+                })
+            end, { desc = "Jumps" })
+            vim.keymap.set("n", "<leader>sd", function()
+                builtin.diagnostics()
+            end, { desc = "Diagnostics" })
+            vim.keymap.set("n", "<leader>sc", builtin.commands, {desc = "Commands"} )
+            vim.keymap.set("n", "<leader>sC", builtin.command_history, {desc = "Command Histories"} )
+
+            -- lsp
+            vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "References" })
+            vim.keymap.set("n", "gI", builtin.lsp_implementations, { desc = "Goto Implementation" })
+            vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Goto Type Definitions" })
+            vim.keymap.set("n", "<leader>ss", function()
+                builtin.lsp_document_symbols({})
+            end, { desc = "Document Symbols" })
+            vim.keymap.set("n", "<leader>sS", function()
+                builtin.lsp_workspace_symbols({})
+            end, { desc = "Workspace Symbols" })
+
+            -- notification
+            vim.keymap.set("n", "no", ":Telescope notify<cr>", { desc = "Notification History" })
         end,
     },
 }
