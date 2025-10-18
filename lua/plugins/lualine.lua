@@ -8,6 +8,10 @@ return {
         require("lualine").setup({
             options = {
                 theme = "dracula",
+                disabled_filetypes = { -- Filetypes to disable lualine for.
+                    statusline = { "NvimTree" }, -- only ignores the ft for statusline.
+                    winbar = {}, -- only ignores the ft for winbar.
+                },
             },
             sections = {
                 lualine_c = {
