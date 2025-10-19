@@ -35,7 +35,9 @@ local vue_ls_config = {
             end
             local ts_client = clients[1]
 
+            ---@diagnostic disable-next-line: deprecated
             local param = unpack(result)
+            ---@diagnostic disable-next-line: deprecated
             local id, command, payload = unpack(param)
             ts_client:exec_cmd({
                 title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
@@ -246,29 +248,6 @@ return {
                 update_in_insert = false,
                 severity_sort = true,
             })
-
-            -- LSP Keymaps
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-
-            -- lsp position
-            vim.keymap.set("n", "gd", function()
-                vim.lsp.buf.definition()
-            end, { desc = "Goto Definition" })
-            vim.keymap.set("n", "gD", function()
-                vim.lsp.buf.declaration()
-            end, { desc = "Goto Declaration" })
-
-            -- split window
-            vim.keymap.set("n", "gv", function()
-                vim.cmd("vsplit")
-                vim.lsp.buf.definition()
-            end, { desc = "Goto Definition (VSplit)" })
-
-            vim.keymap.set("n", "gs", function()
-                vim.cmd("split")
-                vim.lsp.buf.definition()
-            end, { desc = "Goto Definition (Split)" })
         end,
     },
 }

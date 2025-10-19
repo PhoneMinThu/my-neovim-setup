@@ -1,5 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
+    lazy = true,
     dependencies = {
         {
             "SmiteshP/nvim-navbuddy",
@@ -11,6 +12,6 @@ return {
         }
     },
     config = function()
-        vim.keymap.set("n", "<leader>sn", ":Navbuddy<cr>", { desc = "Lsp symbols Nav" })
+
     end
 }

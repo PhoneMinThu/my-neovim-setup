@@ -93,10 +93,10 @@ return {
             vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "References" })
             vim.keymap.set("n", "gI", builtin.lsp_implementations, { desc = "Goto Implementation" })
             vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Goto Type Definitions" })
-            vim.keymap.set("n", "<leader>ss", function()
+            vim.keymap.set("n", "<leader>sS", function()
                 builtin.lsp_document_symbols({})
             end, { desc = "Document Symbols" })
-            vim.keymap.set("n", "<leader>sS", function()
+            vim.keymap.set("n", "<leader>sW", function()
                 builtin.lsp_workspace_symbols({})
             end, { desc = "Workspace Symbols" })
 

@@ -1,5 +1,6 @@
 return {
     "stevearc/conform.nvim",
+    event = "VeryLazy",
     opts = {},
     config = function()
         local conform = require("conform")
@@ -66,9 +67,5 @@ return {
             },
             stop_after_first = true,
         })
-
-        vim.keymap.set({ "n", "v" }, "<M-F>", function()
-            conform.format({ async = true, lsp_fallback = true })
-        end, { desc = "Format file with Conform" })
     end,
 }
