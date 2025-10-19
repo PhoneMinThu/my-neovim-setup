@@ -19,7 +19,7 @@ return {
                     delay = 100,
                     animation = indentscope.gen_animation.quadratic({
                         easing = "out",
-                        duration = 60,
+                        duration = 20,
                         unit = "step",
                     }),
                     priority = 2,

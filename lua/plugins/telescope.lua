@@ -71,8 +71,8 @@ return {
             vim.keymap.set("n", "<leader>sd", function()
                 builtin.diagnostics()
             end, { desc = "Diagnostics" })
-            vim.keymap.set("n", "<leader>sc", builtin.commands, {desc = "Commands"} )
-            vim.keymap.set("n", "<leader>sC", builtin.command_history, {desc = "Command Histories"} )
+            vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "Commands" })
+            vim.keymap.set("n", "<leader>sC", builtin.command_history, { desc = "Command Histories" })
 
             -- lsp
             vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "References" })
@@ -86,7 +86,7 @@ return {
             end, { desc = "Workspace Symbols" })
 
             -- notification
-            vim.keymap.set("n", "no", ":Telescope notify<cr>", { desc = "Notification History" })
+            vim.keymap.set("n", "<leader>no", ":Telescope notify<cr>", { desc = "Notification History" })
         end,
     },
 }

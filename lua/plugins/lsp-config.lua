@@ -86,19 +86,39 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
+                    -- lua
                     "lua_ls",
+
+                    -- python
                     "pyright",
-                    "ruff",
+
+                    -- rust
                     "rust_analyzer",
+
+                    -- ts/js
                     "ts_ls",
-                    "html",
                     "vtsls",
-                    "vue_ls",
+
+                    -- web
+                    "html",
                     "cssls",
                     "tailwindcss",
+
+                    -- vue
+                    "vue_ls",
+
+                    -- c/cpp
+                    "clangd",
+
+                    -- data
+                    "sqlls",
                     "postgres_lsp",
+
+                    -- serial data
                     "jsonls",
                     "yamlls",
+
+                    -- docker
                     "docker_language_server",
                 },
             })
@@ -124,9 +144,6 @@ return {
                         },
                     },
                 },
-                capabilities = capabilities,
-            })
-            vim.lsp.config("ruff", {
                 capabilities = capabilities,
             })
 
@@ -162,11 +179,6 @@ return {
             vim.lsp.config("vtsls", vtsls_config)
             vim.lsp.config("vue_ls", vue_ls_config)
 
-            -- Java
-            -- vim.lsp.config("jdtls", {
-            --     capabilities = capabilities,
-            -- })
-
             -- JSON, YAML
             vim.lsp.config("jsonls", {
                 capabilities = capabilities,
@@ -175,69 +187,51 @@ return {
                 capabilities = capabilities,
             })
 
-            -- Enable all LSP servers
-            vim.lsp.enable({
-                "lua_ls",
-                "pyright",
-                "ruff",
-                "rust_analyzer",
-                "ts_ls",
-                "html",
-                "vtsls",
-                "vue_ls",
-                "clangd",
-                "cssls",
-                "tailwindcss",
-                -- jdtls managed by nvim-jdtls in dap.lua
-                "postgres_lsp",
-                "jsonls",
-                "yamlls",
+            vim.lsp.config("sqlls", {
+                capabilities = capabilities,
             })
 
-            -- Manual LSP configurations
-            local lspconfig = require("lspconfig")
-            local configs = require("lspconfig.configs")
+            vim.lsp.config("postgres_lsp", {
+                capabilities = capabilities,
+            })
 
             -- Configure postgres_lsp manually (using postgrestools)
-            if not configs.postgres_lsp then
-                configs.postgres_lsp = {
-                    default_config = {
-                        cmd = {
-                            vim.fn.stdpath("data") .. "/mason/bin/postgrestools",
-                            "lsp-proxy",
-                            "--config-path=" .. vim.fn.stdpath("config") .. "/postgrestools.jsonc",
-                        },
-                        filetypes = { "sql", "pgsql" },
-                        root_dir = lspconfig.util.root_pattern(".git", "postgrestools.jsonc"),
-                        settings = {},
-                    },
-                    docs = {
-                        description = "PostgreSQL LSP server using postgrestools",
-                    },
-                }
-            end
 
-            lspconfig.postgres_lsp.setup({
-                capabilities = capabilities,
-            })
+            vim.lsp.enable({
+                -- lua
+                "lua_ls",
 
-            -- Configure sqruff manually since it's not in mason
-            if not configs.sqruff then
-                configs.sqruff = {
-                    default_config = {
-                        cmd = { "sqruff", "lsp" },
-                        filetypes = { "sql" },
-                        root_dir = lspconfig.util.root_pattern(".sqruff", ".git"),
-                        settings = {},
-                    },
-                    docs = {
-                        description = "Fast SQL linter and formatter",
-                    },
-                }
-            end
+                -- python
+                "pyright",
 
-            lspconfig.sqruff.setup({
-                capabilities = capabilities,
+                -- rust
+                "rust_analyzer",
+
+                -- ts/js
+                "ts_ls",
+                "vtsls",
+
+                -- web
+                "html",
+                "cssls",
+                "tailwindcss",
+
+                -- vue
+                "vue_ls",
+
+                -- c/cpp
+                "clangd",
+
+                -- data
+                "sqlls",
+                "postgres_lsp",
+
+                -- serial data
+                "jsonls",
+                "yamlls",
+
+                -- docker
+                "docker_language_server",
             })
 
             -- Global Diagnostic UI settings
