@@ -31,8 +31,16 @@ return {
             },
             indent = { enable = true },
             -- ✅ Add this section for folding
-            fold = {
+            fold = { enable = true },
+
+            incremental_selection = {
                 enable = true,
+                keymaps = {
+                    init_selection = "<C-n>",    -- Start selection at the current node
+                    node_incremental = "<C-n>",  -- Expand to the next parent node
+                    scope_incremental = "<C-s>", -- Expand to the next sibling scope
+                    node_decremental = "<C-r>",  -- Contract to the previous child node
+                },
             },
         })
     end,
