@@ -1,7 +1,6 @@
 return {
     "stevearc/conform.nvim",
     opts = {},
-
     config = function()
         local conform = require("conform")
 
@@ -10,14 +9,14 @@ return {
                 lua = { "stylua" },
                 python = {
                     exe = "ruff",
-                    args = { "--fix", "--stdin-filename", "%:p" },
+                    args = { "check", "--fix", vim.api.nvim_buf_get_name(0) },
                     stdin = true,
                 },
                 vue = {
                     exe = "prettier",
-                    args = { "--stdin-filepath", "%:p" },
+                    args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
                     stdin = true,
-                    cwd = vim.fn.getcwd,
+                    cwd = vim.fn.getcwd(),
                 },
                 javascript = { "prettier" },
                 typescript = { "prettier" },
