@@ -61,10 +61,7 @@ return {
                 },
 
                 -- lowlevel
-                rust = { "ast_grep" },
-                cpp = { "ast_grep" },
-                c = { "ast_grep" },
-                java = { "ast_grep" },
+                rust = { "rustfmt" },
             },
             stop_after_first = true,
         })
