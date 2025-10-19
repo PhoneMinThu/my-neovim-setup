@@ -31,7 +31,12 @@ return {
                 },
                 pickers = {
                     find_files = themes.get_ivy({
-                        layout_config = { height = 0.5 },
+                        layout_config = {
+                            height = 0.5,
+                            prompt_position = "top",
+                            anchor = "N",
+                            width = 0.8,
+                        },
                         border = true,
                     }),
                 },
