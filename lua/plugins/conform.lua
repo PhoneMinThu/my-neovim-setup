@@ -59,6 +59,7 @@ return {
                     stdin = true,
                     cwd = vim.fn.getcwd(),
                 },
+                markdown = { "prettier" },
 
                 -- lowlevel
                 rust = { "rustfmt" },
