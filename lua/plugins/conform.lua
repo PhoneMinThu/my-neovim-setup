@@ -6,22 +6,65 @@ return {
 
         conform.setup({
             formatters_by_ft = {
+                -- lua
                 lua = { "stylua" },
+
+                -- python
                 python = {
                     exe = "ruff",
-                    args = { "check", "--fix", vim.api.nvim_buf_get_name(0) },
+                    args = { "format", "%:p" },
                     stdin = true,
                 },
+
+                -- web
                 vue = {
                     exe = "prettier",
-                    args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+                    args = { "--stdin-filepath", "%:p" },
                     stdin = true,
                     cwd = vim.fn.getcwd(),
                 },
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                css = { "prettier" },
-                html = { "prettier" },
+                javascript = {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", "%:p" },
+                    stdin = true,
+                    cwd = vim.fn.getcwd(),
+                },
+                typescript = {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", "%:p" },
+                    stdin = true,
+                    cwd = vim.fn.getcwd(),
+                },
+                javascriptreact = {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", "%:p" },
+                    stdin = true,
+                    cwd = vim.fn.getcwd(),
+                },
+                typescriptreact = {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", "%:p" },
+                    stdin = true,
+                    cwd = vim.fn.getcwd(),
+                },
+                css = {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", "%:p" },
+                    stdin = true,
+                    cwd = vim.fn.getcwd(),
+                },
+                html = {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", "%:p" },
+                    stdin = true,
+                    cwd = vim.fn.getcwd(),
+                },
+
+                -- lowlevel
+                rust = { "ast_grep" },
+                cpp = { "ast_grep" },
+                c = { "ast_grep" },
+                java = { "ast_grep" },
             },
             stop_after_first = true,
         })
