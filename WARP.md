@@ -191,6 +191,12 @@ node, npm/pnpm, python3, pip
 lazygit                 # Git TUI integration
 ```
 
+### Neovide
+
+`nvide ./path/to/file`
+
+neovide is setup with astro.nvim
+
 ### Mason Tool Directory
 
 Language servers install to: `~/.local/share/nvim/mason/packages/`

@@ -63,7 +63,6 @@ local vue_ls_config = {
 return {
     {
         "mason-org/mason.nvim",
-        event = "VeryLazy",
         opts = {
             ui = {
                 icons = {
@@ -79,7 +78,6 @@ return {
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        event = "VeryLazy",
         opts = {},
         dependencies = {
             "mason-org/mason.nvim",
@@ -130,7 +128,6 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
