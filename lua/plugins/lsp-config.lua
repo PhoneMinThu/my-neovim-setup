@@ -91,6 +91,7 @@ return {
 
                     -- python
                     "pyright",
+                    "ruff",
 
                     -- rust
                     "rust_analyzer",
@@ -98,6 +99,7 @@ return {
                     -- ts/js
                     "ts_ls",
                     "vtsls",
+                    "eslint",
 
                     -- web
                     "html",
@@ -203,6 +205,7 @@ return {
 
                 -- python
                 "pyright",
+                "ruff",
 
                 -- rust
                 "rust_analyzer",
@@ -210,6 +213,7 @@ return {
                 -- ts/js
                 "ts_ls",
                 "vtsls",
+                "eslint",
 
                 -- web
                 "html",
