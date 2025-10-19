@@ -30,7 +30,6 @@ return {
             { "<leader>n", desc = "Notifications" },
             { "<leader>s", desc = "Search" },
             { "<leader>t", desc = "Tab/Terminal" },
-            { "<leader>u", desc = "Toggle" },
             { "<leader>w", desc = "Windows" },
         })
     end,

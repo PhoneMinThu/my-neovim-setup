@@ -16,17 +16,27 @@ return {
             local telescope = require("telescope")
             local multigrep = require("config.telescope.multigrep")
             local builtin = require("telescope.builtin")
+            local themes = require("telescope.themes")
 
             telescope.setup({
-                pickers = {
-                    find_files = {
-                        theme = "ivy",
+                defaults = {
+                    -- 8 border chars: top, right, bottom, left, top-left, top-right, bottom-right, bottom-left
+                    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                    layout_config = {
+                        prompt_position = "top",
+                        width = 0.8,
+                        height = 0.8,
                     },
+                    sorting_strategy = "ascending",
+                },
+                pickers = {
+                    find_files = themes.get_ivy({
+                        layout_config = { height = 0.5 },
+                        border = true,
+                    }),
                 },
                 extensions = {
-                    ["ui-select"] = {
-                        require("telescope.themes").get_dropdown({}),
-                    },
+                    ["ui-select"] = themes.get_dropdown({ border = true }),
                     fzf = {},
                 },
             })
