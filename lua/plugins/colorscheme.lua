@@ -1,10 +1,5 @@
-if vim.g.neovide then
-    return {}
-end
-
 return {
     "sainnhe/sonokai",
-    priority = 1000,
     config = function()
         vim.g.sonokai_style = "shusia"
         vim.cmd("colorscheme sonokai")

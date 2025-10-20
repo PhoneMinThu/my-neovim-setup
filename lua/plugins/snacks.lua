@@ -1,9 +1,15 @@
 ---@diagnostic disable: undefined-doc-name, undefined-global
 return {
     "folke/snacks.nvim",
+    lazy = false,
+    priority = 1000,
+
     ---@type snacks.Config
     opts = {
-        picker = {},
+        picker = { enabled = true },
+        indent = { enabled = true },
+        input = { enabled = true },
+        scope = { enabled = true },
     },
     keys = {
         -- important
