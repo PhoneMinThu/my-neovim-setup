@@ -122,6 +122,9 @@ return {
 
                     -- docker
                     "docker_language_server",
+
+                    -- markdown
+                    "markdown_oxide",
                 },
             })
         end,
@@ -235,6 +238,9 @@ return {
 
                 -- docker
                 "docker_language_server",
+
+                -- markdown
+                "markdown_oxide",
             })
 
             -- Global Diagnostic UI settings
