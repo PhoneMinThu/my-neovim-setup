@@ -48,6 +48,10 @@ return {
         "AstroNvim/astrocore",
         ---@type AstroCoreOpts
         opts = {
+            features = {
+                -- toggle if diagnostics are enabled on startup
+                diagnostics = true,
+            },
             options = {
                 opt = {
                     guifont = "JetBrainsMono Nerd Font:h12",
@@ -61,10 +65,10 @@ return {
                     neovide_initial_scale_factor = vim.g.neovide_scale_factor or 0.9,
                     neovide_scale_factor = vim.g.neovide_scale_factor or 0.9,
                     -- Neovide UI settings
-                    neovide_padding_top = 6,
-                    neovide_padding_bottom = 2,
-                    neovide_padding_right = 4,
-                    neovide_padding_left = 4,
+                    neovide_padding_top = 0,
+                    neovide_padding_bottom = 0,
+                    neovide_padding_right = 6,
+                    neovide_padding_left = 6,
                 },
             },
             commands = {
@@ -113,6 +117,13 @@ return {
                     },
                     ["<C-0>"] = { reset_scale_factor, desc = "Reset Neovide scale factor" },
                 },
+            },
+            diagnostics = {
+                virtual_text = true,
+                virtual_lines = false, -- Neovim v0.11+ only
+                update_in_insert = false,
+                underline = true,
+                severity_sort = true,
             },
         },
     }

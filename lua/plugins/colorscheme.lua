@@ -3,9 +3,10 @@ if vim.g.neovide then
 end
 
 return {
-    "olimorris/onedarkpro.nvim",
-    priority = 1000, -- Ensure it loads first
+    "sainnhe/sonokai",
+    priority = 1000,
     config = function()
-        vim.cmd("colorscheme onedark")
+        vim.g.sonokai_style = "shusia"
+        vim.cmd("colorscheme sonokai")
     end,
 }
