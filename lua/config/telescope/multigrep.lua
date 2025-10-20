@@ -25,8 +25,10 @@ M.live_multigrep = function(opts)
             local pieces = vim.split(prompt, "  ")
             local args = { "rg" }
             if pieces[1] then
-                table.insert(args, "-e")
-                table.insert(args, pieces[1])
+                for _, value in ipairs(vim.split(pieces[1], " ")) do
+                    table.insert(args, "-e")
+                    table.insert(args, value)
+                end
             end
 
             if pieces[2] then
@@ -58,14 +60,8 @@ M.live_multigrep = function(opts)
             previewer = conf.grep_previewer(opts),
             sorter = require("telescope.sorters").empty(),
 
-            -- 🔹 Live highlight hook
-            on_input_filter_cb = function(prompt)
-                local search_term = prompt:match("^%S+")
-                if search_term and search_term ~= "" then
-                    vim.fn.setreg("/", search_term)
-                    vim.opt.hlsearch = true
-                end
-                return { prompt = prompt }
+            on_attached = function()
+                vim.notify("Multi Grep attached")
             end,
         })
         :find()

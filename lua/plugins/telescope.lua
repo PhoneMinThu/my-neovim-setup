@@ -58,49 +58,13 @@ return {
                     hidden = true,
                     no_ignore = true,
                 })
-            end, { desc = "Find Files (Hidden)" })
-            vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
-            vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
+            end, { desc = "Find Files" })
+
+            -- multigrep
             vim.keymap.set("n", "<leader>fg", multigrep.live_multigrep, { desc = "Multi Live Grep" })
             vim.keymap.set("n", "<leader>fG", function()
-                multigrep.live_multigrep({
-                    hidden = true,
-                })
+                multigrep.live_multigrep({ hidden = true })
             end, { desc = "Multi Live Grep" })
-            vim.keymap.set("n", "<leader>fp", function()
-                builtin.find_files({
-                    cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
-                })
-            end, { desc = "Find Source" })
-            vim.keymap.set("n", "<leader>fz", function()
-                builtin.current_buffer_fuzzy_find()
-            end, { desc = "Buffers lines" })
-
-            --- search
-            vim.keymap.set("n", "<leader>sj", function()
-                builtin.jumplist({
-                    show_line = false,
-                    trim_text = false,
-                })
-            end, { desc = "Jumps" })
-            vim.keymap.set("n", "<leader>sd", function()
-                builtin.diagnostics()
-            end, { desc = "Diagnostics" })
-            vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "Commands" })
-            vim.keymap.set("n", "<leader>sC", builtin.command_history, { desc = "Command Histories" })
-
-            -- lsp
-            vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Goto Definition" })
-            vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "References" })
-            vim.keymap.set("n", "gI", builtin.lsp_implementations, { desc = "Goto Implementation" })
-            vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Goto Type Definitions" })
-            vim.keymap.set("n", "<leader>sS", function()
-                builtin.lsp_document_symbols({})
-            end, { desc = "Document Symbols" })
-            vim.keymap.set("n", "<leader>sW", function()
-                builtin.lsp_workspace_symbols({})
-            end, { desc = "Workspace Symbols" })
-
             -- notification
             vim.keymap.set("n", "<leader>no", ":Telescope notify<cr>", { desc = "Notification History" })
         end,
