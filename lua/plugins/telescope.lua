@@ -90,6 +90,7 @@ return {
             vim.keymap.set("n", "<leader>sC", builtin.command_history, { desc = "Command Histories" })
 
             -- lsp
+            vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Goto Definition" })
             vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "References" })
             vim.keymap.set("n", "gI", builtin.lsp_implementations, { desc = "Goto Implementation" })
             vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Goto Type Definitions" })

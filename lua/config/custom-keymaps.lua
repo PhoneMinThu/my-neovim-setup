@@ -15,9 +15,6 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 -- lsp position
-vim.keymap.set("n", "gd", function()
-    vim.lsp.buf.definition()
-end, { desc = "Goto Definition" })
 vim.keymap.set("n", "gD", function()
     vim.lsp.buf.declaration()
 end, { desc = "Goto Declaration" })
