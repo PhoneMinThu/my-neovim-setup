@@ -1,0 +1,20 @@
+# stylua.toml
+
+# Indentation
+indent_type = "Spaces"        # or "Tabs"
+indent_width = 4              # default: 4 for Spaces, 1 for Tabs
+
+# Line width
+column_width = 70 
+
+# Quote style
+quote_style = "AutoPreferDouble"  # or "AutoPreferDouble"
+
+# Call parentheses
+call_parentheses = "Always"     # or "Always" or "NoSingleString"
+
+# Sort requires (optional)
+sort_requires = true
+
+# Detect end-of-line automatically
+end_of_line = "Auto"
