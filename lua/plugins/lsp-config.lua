@@ -176,12 +176,11 @@ return {
                 capabilities = capabilities,
             })
 
-            -- Vue
             -- dart
-            vim.lsp.config('dartls', {
-                cmd = { 'dart', 'language-server', '--protocol=lsp' },
-                filetypes = { 'dart' },
-                root_markers = { 'pubspec.yaml' },
+            vim.lsp.config("dartls", {
+                cmd = { "dart", "language-server", "--protocol=lsp" },
+                filetypes = { "dart" },
+                root_markers = { "pubspec.yaml" },
                 settings = {
                     dart = {
                         completeFunctionCalls = true,
@@ -195,10 +194,10 @@ return {
             })
 
             -- flutter
-            vim.lsp.config('dartls', {
-                cmd = { 'flutter', 'language-server', '--protocol=lsp' },
-                filetypes = { 'dart' },
-                root_markers = { 'pubspec.yaml' },
+            vim.lsp.config("dartls", {
+                cmd = { "flutter", "language-server", "--protocol=lsp" },
+                filetypes = { "dart" },
+                root_markers = { "pubspec.yaml" },
                 settings = {
                     dart = {
                         completeFunctionCalls = true,
@@ -209,6 +208,12 @@ return {
                         },
                     },
                 },
+            })
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "dart",
+                callback = function()
+                    vim.lsp.start(vim.lsp.config("dartls"))
+                end,
             })
 
             -- JSON, YAML
@@ -227,13 +232,6 @@ return {
             -- PostgresSQL
             vim.lsp.config("postgres_lsp", {
                 capabilities = capabilities,
-            })
-
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = 'dart',
-                callback = function()
-                    vim.lsp.start(vim.lsp.config('dartls'))
-                end,
             })
 
             -- Configure postgres_lsp manually (using postgrestools)
