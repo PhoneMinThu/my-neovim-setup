@@ -10,6 +10,7 @@ return {
         indent = { enabled = true },
         input = { enabled = true },
         scope = { enabled = true },
+        lazygit = { enabled = true }
     },
     keys = {
         -- important
@@ -38,5 +39,7 @@ return {
         { "<leader>sR", function() Snacks.picker.resume() end,                desc = "Resume" },
         { "<leader>su", function() Snacks.picker.undo() end,                  desc = "Undo History" },
         { "<leader>uC", function() Snacks.picker.colorschemes() end,          desc = "Colorschemes" },
+        -- lazygit
+        { "<leader>gl", function() Snacks.lazygit() end,                      desc = "Lazygit" },
     },
 }
