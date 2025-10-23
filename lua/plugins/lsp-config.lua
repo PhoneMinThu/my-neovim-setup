@@ -1,3 +1,4 @@
+---@diagnostic disable: deprecated
 local vue_language_server_path = vim.fn.stdpath("data")
     .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
@@ -98,16 +99,12 @@ return {
 
                     -- ts/js
                     "ts_ls",
-                    "vtsls",
                     "eslint",
 
                     -- web
                     "html",
                     "cssls",
                     "tailwindcss",
-
-                    -- vue
-                    "vue_ls",
 
                     -- c/cpp
                     "clangd",
@@ -180,8 +177,39 @@ return {
             })
 
             -- Vue
-            vim.lsp.config("vtsls", vtsls_config)
-            vim.lsp.config("vue_ls", vue_ls_config)
+            -- dart
+            vim.lsp.config('dartls', {
+                cmd = { 'dart', 'language-server', '--protocol=lsp' },
+                filetypes = { 'dart' },
+                root_markers = { 'pubspec.yaml' },
+                settings = {
+                    dart = {
+                        completeFunctionCalls = true,
+                        showTodos = true,
+                        analysisExcludedFolders = {
+                            vim.fn.expand("$HOME/.pub-cache"),
+                            vim.fn.expand("$HOME/flutter"),
+                        },
+                    },
+                },
+            })
+
+            -- flutter
+            vim.lsp.config('dartls', {
+                cmd = { 'flutter', 'language-server', '--protocol=lsp' },
+                filetypes = { 'dart' },
+                root_markers = { 'pubspec.yaml' },
+                settings = {
+                    dart = {
+                        completeFunctionCalls = true,
+                        showTodos = true,
+                        analysisExcludedFolders = {
+                            vim.fn.expand("$HOME/.pub-cache"),
+                            vim.fn.expand("$HOME/flutter"),
+                        },
+                    },
+                },
+            })
 
             -- JSON, YAML
             vim.lsp.config("jsonls", {
@@ -191,16 +219,24 @@ return {
                 capabilities = capabilities,
             })
 
+            -- SQL
             vim.lsp.config("sqlls", {
                 capabilities = capabilities,
             })
 
+            -- PostgresSQL
             vim.lsp.config("postgres_lsp", {
                 capabilities = capabilities,
             })
 
-            -- Configure postgres_lsp manually (using postgrestools)
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = 'dart',
+                callback = function()
+                    vim.lsp.start(vim.lsp.config('dartls'))
+                end,
+            })
 
+            -- Configure postgres_lsp manually (using postgrestools)
             vim.lsp.enable({
                 -- lua
                 "lua_ls",
@@ -214,7 +250,6 @@ return {
 
                 -- ts/js
                 "ts_ls",
-                "vtsls",
                 "eslint",
 
                 -- web
@@ -222,8 +257,8 @@ return {
                 "cssls",
                 "tailwindcss",
 
-                -- vue
-                "vue_ls",
+                -- dart
+                "dartls",
 
                 -- c/cpp
                 "clangd",
@@ -242,6 +277,10 @@ return {
                 -- markdown
                 "markdown_oxide",
             })
+
+            vim.lsp.config("vtsls", vtsls_config)
+            vim.lsp.config("vue_ls", vue_ls_config)
+            vim.lsp.enable({ "vtsls", "vue_ls" })
 
             -- Global Diagnostic UI settings
             vim.diagnostic.config({
