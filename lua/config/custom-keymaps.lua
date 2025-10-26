@@ -9,7 +9,6 @@ vim.api.nvim_set_keymap("n", "<c-l>", ":tabnext<CR>", { noremap = true, silent =
 vim.api.nvim_set_keymap("n", "<c-h>", ":tabprev<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true })
 
-
 -- LSP Keymaps
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
@@ -24,13 +23,6 @@ vim.keymap.set("n", "gs", function()
     vim.cmd("split")
     vim.lsp.buf.definition()
 end, { desc = "Goto Definition (Split)" })
-
--- code format
-local conform = require("conform")
-
-vim.keymap.set({ "n", "v" }, "<M-F>", function()
-    conform.format({ async = true, lsp_fallback = true })
-end, { desc = "Format file with Conform" })
 
 -- gitsigns
 vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })
