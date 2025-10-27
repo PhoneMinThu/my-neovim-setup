@@ -10,11 +10,31 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "ruff_format" },
-                javascript = { "prettierd", "prettier" },
-                typescript = { "prettierd", "prettier" },
-                javascriptreact = { "prettierd", "prettier" },
-                typescriptreact = { "prettierd", "prettier" },
-                vue = { "prettierd", "prettier" },
+                javascript = {
+                    -- "eslint_d",
+                    "prettierd",
+                    -- "prettier",
+                },
+                typescript = {
+                    -- "eslint_d",
+                    "prettierd",
+                    -- "prettier",
+                },
+                javascriptreact = {
+                    -- "eslint_d",
+                    "prettierd",
+                    -- "prettier",
+                },
+                typescriptreact = {
+                    -- "eslint_d",
+                    "prettierd",
+                    -- "prettier",
+                },
+                vue = {
+                    -- "eslint_d",
+                    "prettierd",
+                    -- "prettier",
+                },
                 css = { "prettierd" },
                 html = { "prettierd" },
                 json = { "prettierd" },

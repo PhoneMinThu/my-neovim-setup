@@ -1,15 +1,15 @@
 return {
     {
         "sainnhe/sonokai",
-        config = function()
-            vim.cmd("colorscheme sonokai")
-        end
+        -- config = function()
+        --     vim.cmd("colorscheme sonokai")
+        -- end
     },
     {
         "rebelot/kanagawa.nvim",
-        -- config = function ()
-        --     vim.cmd("colorscheme kanagawa-wave")
-        -- end
+        config = function()
+            vim.cmd("colorscheme  kanagawa-dragon")
+        end,
     },
     {
         "olimorris/onedarkpro.nvim",
@@ -17,5 +17,4 @@ return {
         --     vim.cmd("colorscheme onedark")
         -- end
     },
-
 }
