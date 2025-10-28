@@ -24,6 +24,11 @@ return {
             filters = {
                 dotfiles = true,
             },
+            filesystem_watchers = {
+                enable = true,
+                ignore_dirs = { "node_modules", ".venv" },
+            },
+
             on_attach = on_attach,
         })
 

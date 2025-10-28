@@ -6,11 +6,11 @@ return {
 
         lint.linters_by_ft = {
             python = { "ruff" },
-            vue = { "eslint" },
-            javascript = { "eslint" },
-            javascriptreact = { "eslint" },
-            typescript = { "eslint" },
-            typescriptreact = { "eslint" },
+            vue = { "eslint_d" },
+            javascript = { "eslint_d" },
+            javascriptreact = { "eslint_d" },
+            typescript = { "eslint_d" },
+            typescriptreact = { "eslint_d" },
 
             rust = { "clippy" },
         }

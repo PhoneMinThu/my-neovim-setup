@@ -85,6 +85,16 @@ return {
                 },
                 capabilities = capabilities,
             })
+            vim.lsp.config("ruff", {
+                settings = {
+                    python = {
+                        analysis = {
+                            typeCheckingMode = "off",
+                        },
+                    },
+                },
+                capabilities = capabilities,
+            })
 
             -- Web
             -- HTML
