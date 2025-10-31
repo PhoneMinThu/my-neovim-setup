@@ -14,15 +14,15 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 -- lsp -> split window
-vim.keymap.set("n", "gv", function()
-    vim.cmd("vsplit")
-    vim.lsp.buf.definition()
-end, { desc = "Goto Definition (VSplit)" })
-
-vim.keymap.set("n", "gs", function()
-    vim.cmd("split")
-    vim.lsp.buf.definition()
-end, { desc = "Goto Definition (Split)" })
+-- vim.keymap.set("n", "gv", function()
+--     vim.cmd("vsplit")
+--     vim.lsp.buf.definition()
+-- end, { desc = "Goto Definition (VSplit)" })
+--
+-- vim.keymap.set("n", "gs", function()
+--     vim.cmd("split")
+--     vim.lsp.buf.definition()
+-- end, { desc = "Goto Definition (Split)" })
 
 -- gitsigns
 vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })

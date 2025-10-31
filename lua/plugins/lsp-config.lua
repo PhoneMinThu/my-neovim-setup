@@ -47,8 +47,8 @@ return {
                     "rust_analyzer",
 
                     -- database
-                    "sqlls",
-                    "postgres_lsp",
+                    -- "sqlls",
+                    -- "postgres_lsp",
 
                     -- serial data
                     "jsonls",
@@ -123,13 +123,13 @@ return {
 
             -- Database
             -- SQL
-            vim.lsp.config("sqlls", {
-                capabilities = capabilities,
-            })
+            -- vim.lsp.config("sqlls", {
+            --     capabilities = capabilities,
+            -- })
             -- PostgresSQL
-            vim.lsp.config("postgres_lsp", {
-                capabilities = capabilities,
-            })
+            -- vim.lsp.config("postgres_lsp", {
+            --     capabilities = capabilities,
+            -- })
 
             -- JSON, YAML
             vim.lsp.config("jsonls", {
@@ -217,8 +217,8 @@ return {
                 "rust_analyzer",
 
                 -- database
-                "sqlls",
-                "postgres_lsp",
+                -- "sqlls",
+                -- "postgres_lsp",
 
                 -- serial data
                 "jsonls",

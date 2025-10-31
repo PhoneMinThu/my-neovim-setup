@@ -16,19 +16,29 @@ return {
                 sorter = "case_sensitive",
             },
             view = {
-                width = 30,
+                width = 40,
             },
             renderer = {
                 group_empty = true,
             },
+            git = {
+                enable = true,
+                ignore = true, -- ignore files listed in .gitignore
+            },
+            actions = {
+                open_file = {
+                    quit_on_open = false,
+                },
+            },
             filters = {
-                dotfiles = true,
+                dotfiles = false, -- hide dotfiles if you want
+                custom = { "node_modules", ".venv" }, -- exclude these from the tree
             },
             filesystem_watchers = {
-                enable = true,
-                ignore_dirs = { "node_modules", ".venv" },
+                enable = true, -- keep file watching
+                debounce_delay = 50,
+                ignore_dirs = { "node_modules", ".venv" }, -- ⬅️ new in recent versions
             },
-
             on_attach = on_attach,
         })
 
