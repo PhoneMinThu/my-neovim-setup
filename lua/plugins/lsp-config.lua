@@ -34,6 +34,7 @@ return {
 
                     -- python
                     "pyright",
+                    -- "jedi_language_server",
 
                     -- web
                     "html",
@@ -85,6 +86,7 @@ return {
                 },
                 capabilities = capabilities,
             })
+
             vim.lsp.config("ruff", {
                 settings = {
                     python = {
@@ -201,6 +203,7 @@ return {
 
                 -- python
                 "pyright",
+                -- "jedi_language_server",
 
                 -- web
                 "html",
