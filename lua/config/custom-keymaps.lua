@@ -28,4 +28,4 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action
 vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })
 
 -- nvim navbuddy
-vim.keymap.set("n", "<leader>ss", ":Navbuddy<cr>", { desc = "Lsp symbols Nav" })
+vim.keymap.set("n", "<leader>ss", ":Navbuddy<cr>", { desc = "Lsp symbols Nav", silent = true })
