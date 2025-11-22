@@ -2,7 +2,7 @@ return {
     {
         "sainnhe/sonokai",
         -- config = function()
-        --     vim.cmd("colorscheme unokai")
+        --     vim.cmd("colorscheme sonokai")
         -- end
     },
     {
@@ -20,7 +20,7 @@ return {
     {
         "folke/tokyonight.nvim",
         config = function()
-            vim.cmd("colorscheme tokyonight-night")
+            vim.cmd("colorscheme tokyonight")
         end
     },
 }

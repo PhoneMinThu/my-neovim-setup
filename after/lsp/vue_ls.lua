@@ -7,6 +7,9 @@ vim.lsp.config("vue_ls", {
     filetypes = { "vue" },
     capabilities = capabilities,
 })
+vim.lsp.config("tailwindcss", {
+    capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd("VimEnter", {
     once = true,

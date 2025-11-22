@@ -47,10 +47,6 @@ return {
                     -- rust
                     "rust_analyzer",
 
-                    -- database
-                    -- "sqlls",
-                    -- "postgres_lsp",
-
                     -- serial data
                     "jsonls",
                     "yamlls",
@@ -77,13 +73,6 @@ return {
 
             -- Python
             vim.lsp.config("pyright", {
-                settings = {
-                    python = {
-                        analysis = {
-                            typeCheckingMode = "off",
-                        },
-                    },
-                },
                 capabilities = capabilities,
             })
 
@@ -108,10 +97,6 @@ return {
             vim.lsp.config("cssls", {
                 capabilities = capabilities,
             })
-            -- Tailwind
-            vim.lsp.config("tailwindcss", {
-                capabilities = capabilities,
-            })
 
             -- C/CPP
             vim.lsp.config("clangd", {
@@ -122,16 +107,6 @@ return {
             vim.lsp.config("rust_analyzer", {
                 capabilities = capabilities,
             })
-
-            -- Database
-            -- SQL
-            -- vim.lsp.config("sqlls", {
-            --     capabilities = capabilities,
-            -- })
-            -- PostgresSQL
-            -- vim.lsp.config("postgres_lsp", {
-            --     capabilities = capabilities,
-            -- })
 
             -- JSON, YAML
             vim.lsp.config("jsonls", {
@@ -196,7 +171,6 @@ return {
                 end,
             })
 
-            -- Configure postgres_lsp manually (using postgrestools)
             vim.lsp.enable({
                 -- lua
                 "lua_ls",
@@ -208,7 +182,6 @@ return {
                 -- web
                 "html",
                 "cssls",
-                "tailwindcss",
 
                 -- dart
                 "dartls",
@@ -218,10 +191,6 @@ return {
 
                 -- rust
                 "rust_analyzer",
-
-                -- database
-                -- "sqlls",
-                -- "postgres_lsp",
 
                 -- serial data
                 "jsonls",
