@@ -27,7 +27,7 @@ return {
             },
             actions = {
                 open_file = {
-                    quit_on_open = false,
+                    quit_on_open = true,
                 },
             },
             filters = {
@@ -42,6 +42,7 @@ return {
             on_attach = on_attach,
         })
 
-        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { desc = "Toggle NvimTree", silent = true })
+        -- vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { desc = "Toggle NvimTree", silent = true })
+        vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>", { desc = "Find file in NvimTree", silent = true })
     end,
 }
