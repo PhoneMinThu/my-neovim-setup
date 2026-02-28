@@ -47,7 +47,7 @@ return {
         })
 
         -- Manual format shortcut
-        vim.keymap.set({ "n", "v" }, "<M-F>", function()
+        vim.keymap.set({ "n", "v" }, "<leader>fm", function()
             conform.format({ async = true, lsp_format = "fallback" })
         end, { desc = "Format file with Conform" })
     end,
