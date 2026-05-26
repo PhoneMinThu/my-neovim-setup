@@ -12,6 +12,10 @@ vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, si
 -- LSP Keymaps
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set("n", "gt", function()
+    vim.cmd("tab split")
+    vim.lsp.buf.definition()
+end, { desc = "Goto Definition (New Tab)" })
 
 -- lsp -> split window
 -- vim.keymap.set("n", "gv", function()
@@ -26,6 +30,28 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action
 
 -- gitsigns
 vim.keymap.set("n", "<leader>gh", ":Gitsigns<CR>", { desc = "gitsigns" })
+
+-- Diff / Compare files
+vim.keymap.set("n", "<leader>df", function()
+    require("telescope.builtin").find_files({
+        prompt_title = "Select file to diff with",
+        attach_mappings = function(_, map)
+            map("i", "<CR>", function(prompt_bufnr)
+                local selection = require("telescope.actions.state").get_selected_entry()
+                require("telescope.actions").close(prompt_bufnr)
+                if selection then
+                    vim.cmd("vsplit " .. vim.fn.fnameescape(selection.path or selection.filename))
+                    vim.cmd("diffthis")
+                    vim.cmd("wincmd p")
+                    vim.cmd("diffthis")
+                end
+            end)
+            return true
+        end,
+    })
+end, { desc = "Diff with file (picker)" })
+vim.keymap.set("n", "<leader>dt", ":diffthis<CR>", { desc = "Diff this window", silent = true })
+vim.keymap.set("n", "<leader>dD", ":diffoff!<CR>", { desc = "Diff off", silent = true })
 
 -- nvim navbuddy
 vim.keymap.set("n", "<leader>ss", ":Navbuddy<cr>", { desc = "Lsp symbols Nav", silent = true })
