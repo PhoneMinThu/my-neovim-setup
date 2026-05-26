@@ -12,7 +12,6 @@ local vue_plugin = {
     configNamespace = "typescript",
 }
 
-local ts_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Register vtsls
@@ -22,14 +21,7 @@ vim.lsp.config("vtsls", {
             tsserver = { globalPlugins = { vue_plugin } },
         },
     },
-    filetypes = { "vue" },
-    capabilities = capabilities,
-})
-
--- Register ts_ls as fallback
-vim.lsp.config("ts_ls", {
-    init_options = { plugins = { vue_plugin } },
-    filetypes = ts_filetypes,
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     capabilities = capabilities,
 })
 
@@ -37,6 +29,6 @@ vim.lsp.config("ts_ls", {
 vim.api.nvim_create_autocmd("VimEnter", {
     once = true,
     callback = function()
-        vim.lsp.enable({ "vtsls", "ts_ls" })
+        vim.lsp.enable({ "vtsls" })
     end,
 })
