@@ -43,6 +43,8 @@ return {
 
                     -- c/cpp
                     "clangd",
+                    -- csharp
+                    "omnisharp",
 
                     -- rust
                     "rust_analyzer",
@@ -100,6 +102,10 @@ return {
 
             -- C/CPP
             vim.lsp.config("clangd", {
+                capabilities = capabilities,
+            })
+            -- C#
+            vim.lsp.config("omnisharp", {
                 capabilities = capabilities,
             })
 
@@ -188,6 +194,8 @@ return {
 
                 -- c/cpp
                 "clangd",
+                -- csharp
+                "omnisharp",
 
                 -- rust
                 "rust_analyzer",
